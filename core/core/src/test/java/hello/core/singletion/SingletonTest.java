@@ -32,7 +32,7 @@ public class SingletonTest {
 
     @Test
     @DisplayName("싱글톤 패턴을 적용한 객체 사용")
-    void SingletonServiceTest() {
+    void singletonServiceTest() {
         SingletonService singletonService1 = SingletonService.getInstance();
         SingletonService singletonService2 = SingletonService.getInstance();
 
