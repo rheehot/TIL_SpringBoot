@@ -16,11 +16,12 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 회원 등록
+            // 회원 등록, 비영속상태
             Member member = new Member();
             member.setId(1L);
             member.setName("HelloA");
 
+            // 영속상태
             em.persist(member);
             /* 회원 조회
             Member findMember = em.find(Member.class, 1L);
@@ -50,6 +51,12 @@ public class JpaMain {
             for (Member member1 : result) {
                 System.out.println("member1.name = " + member1.getName());
             }*/
+            
+            // 영속 엔티티의 동일성 보장
+            Member findMember1 = em.find(Member.class, 1L);
+            Member findMember2 = em.find(Member.class, 1L);
+
+            System.out.println("result = " + (findMember1 == findMember2));
 
             tx.commit();
         } catch (Exception e) {
